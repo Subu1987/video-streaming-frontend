@@ -1,0 +1,122 @@
+// how to route from one component to other component
+// there are 3 ways to route
+
+// 1st, we have go the the browser url section then write down the url with its path properly to go the a specific component.
+// like this : localhost:3000/Login
+
+// 2nd, we have to load the component into BrowserRouter & create a Link with where when we click that link its redirect us to that component
+// like this : 
+
+                <BrowserRouter>
+                    <ul>
+                    <li>
+                        <Link to="/demo/subrato">Demo</Link>
+                    </li>
+                    </ul>
+                
+                    <Routes>
+                    <Route path='/demo/:name' element={<Demo/>}></Route>
+                    </Routes>
+
+                </BrowserRouter>
+
+// 3rd, create a way where we can internally locate/route to specific component
+// for this we are gonna use a useNavigate() hook that is available inside 'react-router-dom' package
+// 1st we create a variable where all useNavigate hooks properties & functions available as a object.
+// let navigate = useNavigate();
+
+
+
+// storing token:
+// when we login,from backend in response we get the token so that next time when we try to access any other endpoint we can authorized by our self
+// so we have to store that token in localStorage so that next time when we try access any other endpoint we can again send back that token to backend.
+// like this:
+// localStorage.setItem("vs_details",JSON.stringify({token:data.token,user_id:data.user_id}));
+            
+
+// useRef:
+// its a hook that coming from react package
+// used to declare global variable 
+// The useRef Hook allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated. It can be used to access a DOM element directly.
+
+
+
+
+// Three Main Uses for the Question Mark (?) in JavaScript:
+* Ternary Operator
+* Optional Chaining
+* Nullish Coalescing
+
+// here in the code, we are using question marks in as Optional Chaining
+// {
+    video.Genre?.map((genre,index)=>{
+            return (
+                <span key={index}>{genre}</span>
+            )
+        })
+    }
+// intially we assign a blank object into video state variable.
+// like this: let [video,setVideo] = useState({});
+// so when react render its component, its only understand other properties, but unable genre array from database 
+// so we assign a question mark in Genre?, so that its become Optional if the Genre property not there dont throw me error.
+
+
+
+
+
+// ref:
+// Refs is the shorthand used for references in React. It is similar to keys in React. It is an attribute which makes it possible to store a reference to particular DOM nodes or React elements. It provides a way to access React DOM nodes or React elements and how to interact with it.
+// in normal vanilla JavaScript to access DOM element we can use document.getElementById()
+// but in react to access DOM nodes or react elements we can use ref attribute.
+// so in this case, to access <video> element in react we gonna use ref attribute & assign a function to it.
+// like this: <video width="100%" controls ref={handleVideoElement}>
+// to get the video element we are using handleVideoElement function
+// like this : 
+
+                function handleVideoElement(ele){
+                    console.log(ele);
+                }
+
+// because of using ref attribute & passing a function init 
+// the React element available inside the parameter of this handleVideoElement(ele) function
+// now from the ele object we gonna access the currentTime property to know how much video played the currentTime.
+// function handleVideoElement(ele){
+        console.log(ele?.currentTime);
+    }
+// difference between ref & useRef:
+// useRef is used to create a reference object, while ref is used to access and assign DOM nodes or react components inside the render method to a reference object.
+
+
+
+
+// protecting the router:
+// this function RequireAuth return element thats mean its can be used as a component
+// whatever inside the RequireAuth component can be used as children prop
+// that means here <Videos/> as children prop
+// like this:
+//        <RequireAuth redirectTo="/login">
+            <Videos/>
+          </RequireAuth>
+// here we are passing two props, this redirectTo="/login" which created by us, in which value is "/login"
+// & inside the RequireAuth component, <Videos/> as 2nd props, 
+// if we ever pass something as a tag inside a component that can be as a children props
+
+           function RequireAuth(props){
+            let isAuth = localStorage.getItem("vs_details");
+
+            if(isAuth !== null){
+                return props.children;
+            }
+
+            else{
+                return <Navigate to={props.redirectTo}/>
+            }
+        }
+
+// here Navigate is a component that help to redirect
+// like this : <Navigate to={redirectTo}/>
+
+
+// now finally when we try to access "/Videos" route its not load that Videos component directly,1st it goes to RequireAuth component then it check localStorage available or not,
+// if available go to the Videos route means load the Videos component
+// if not available go back the login component

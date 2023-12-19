@@ -1,38 +1,237 @@
-.App {
-  text-align: center;
-}
+/* css for register & login */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main{
+    padding-left: 10%;
+    padding-right: 10%;
+    height: 100vh;
+    background-color: #5a5656;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    row-gap: 50px;
+    background-image: url('https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg');
+    background-size: cover;
+    background-color: rgba(14, 35, 14, 0.7);
+    background-blend-mode:saturation;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.message-bg{
+    width: 100%;
+    height: 40px;
+    /* background-color: white; */
+    margin-top: 8vh;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.message{
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    line-height: 40px;
+    text-indent: 25px;
+}
+.account{
+  width: 30%;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  row-gap: 20px;
+}
+.title{
+    font-size: 25px;
+}
+.account > input{
+    height: 40px;
+    outline: none;
+    text-indent: 20px;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+}
+.account > button{
+    width: 50%;
+    height: 40px;
+    color: white;
+    background-color: #3ea52a;
+    outline: none;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.account > button:hover{
+    
+    background-color: #111410;
+    color: #3bb823;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* css for videos */
+
+.bg{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 50px;
+    background-color: #111410;
+    color: white;
+}
+.header{
+    width: 100%;
+    /* height: 50px; */
+    /* background-color: #3ea52a; */
+    color: #3bb823;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.header ul{
+    display: flex;
+    height: 40px;
+    list-style-type: none;
+    align-items: center;
+    justify-content: flex-end;
+}
+.header ul li{
+    padding: 0px 20px;
+    transition: 0.3s;
+}
+.header ul li:hover{
+    /* text-decoration: underline; */
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.video-container{
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* background-color: red; */
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.33%;
+    row-gap: 20px;
+    
+    
+}
+.video-card{
+    width: 24%;
+    height: 400px;
+    background-color: #293c2d;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.video-card:hover{
+    transform: scale(1.06);
+    background-color: #3ea52a;
+    color: black;
+}
+.video-card:hover .btn{
+    color: white;
+    background-color: black;
+}
+.video-img-container{
+    width: 100%;
+    height: 250px;
+    /* background-color: blue; */
+    overflow: hidden;
+}
+.video-card:hover .video-img{
+    transform: scale(1.05);
+}
+.video-img{
+    width: 100%;
+    transition: 0.4s;
+}
+.padd{
+    padding: 4px 8px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.movie-title{
+    font-size: 22px;
+}
+.btn{
+    width: 47%;
+    height: 30px;
+    color: white;
+    background-color: #3ea52a;
+    outline: none;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+/* css for video player */
+.video-area{
+    width: 100%;
+    /* background-color: red; */
+    margin-top: 20px;
+}
+.content{
+    margin-top: 30px;
+    display: flex;
+    column-gap: 1.66%;
+    /* text-align: justify; */
+    flex-wrap: wrap;
+}
+.storyline{
+    width: 35% !important;
+    font-size: 17px !important;
+}
+.content>div{
+    width: 20%;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.content .title{
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #3ea52a;
+}
+.actors{
+    font-size: 18px !important;
+    
+}
+
+/* css of button for videoplayer closing */
+
+.videoplayer{
+    height: auto;
+    position: relative;
+}
+.control{
+    width: 100%;
+    height: 50px;
+    background:linear-gradient(to bottom,rgb(48, 79, 46),transparent);
+    position: absolute;
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 25px;
+    z-index: 5;
+}
+
+.control > p{
+    padding: 0px 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.control > p:hover{
+    transform: scale(1.2);
+}
+.videoplayer:hover > .control{
+    display: flex;
 }
